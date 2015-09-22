@@ -29,7 +29,7 @@ var paths = {
     jsSource: 'dev/js/',
     jsDestination: 'dist/js',
     bowerSource: 'bower_components/',
-    bowerDestination: 'dev/js/vendor'
+    bowerDestination: 'dist/js/vendor'
 };
 
 // ---------------------------------------
@@ -60,7 +60,6 @@ gulp.task('html', function(){
 // ---------------------------------------
 // JS Task
 // ---------------------------------------
-// When we move to using Webpack, we'll likely remove these, you can integrate Webpack & Gulp.
 // Here we're using uglify(minification), size(lists file sizes), concat(combines files)
 
 gulp.task('js', function() {
@@ -88,14 +87,20 @@ gulp.task('jshint', function() {
 // ---------------------------------------
 // We're using it to minify & throw them into the dist folder.
 
-// gulp.task( 'lib', function () {
-//   return gulp.src( [
-//       paths.bowerSource + 'calc-polyfill/calc.min.js',
-//       paths.bowerSource + 'calc-polyfill/calc.min.js',
-//     ])
-//     .pipe(uglify())
-//     .pipe( gulp.dest( paths.bowerDestination ))
-// });
+gulp.task( 'lib', function () {
+  return gulp.src( [
+      paths.bowerSource + 'calc-polyfill/calc.min.js',
+      paths.bowerSource + 'contentloaded/src/contentloaded.min.js',
+      paths.bowerSource + 'jquery/dist/jquery.min.js',
+      paths.bowerSource + 'jquery-1.11.2/index.js',
+      paths.bowerSource + 'modernizr/modernizr.js',
+      paths.bowerSource + 'requestAnimationFrame/app/requestAnimationFrame.js',
+      paths.bowerSource + 'respond/dest/respond.min.js',
+      paths.bowerSource + 'selectivizr/selectivizr.js'
+    ])
+    .pipe(uglify())
+    .pipe( gulp.dest( paths.bowerDestination ))
+});
 
 // ---------------------------------------
 // Browser Sync Specific Tasks.
@@ -126,4 +131,4 @@ gulp.task('watch', function() {
 // ---------------------------------------
 // If I run just 'gulp' all of my other tasks will run in the order their listed.
 
-gulp.task('default', ['style', 'js', 'jshint', 'watch']);
+gulp.task('default', ['style', 'js', 'jshint', 'lib', 'watch']);
