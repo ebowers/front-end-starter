@@ -4,6 +4,8 @@ bower_components
 .bower-registry
 .bower-tmp
 
+### Distribution ###
+dist
 
 ### Node ###
 # Logs
