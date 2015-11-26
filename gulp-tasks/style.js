@@ -19,7 +19,7 @@ module.exports = function (gulp, plugins) {
   return gulp.src(paths.cssSource + 'main.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass())
-    // .pipe(plugins.postcss(processors))
+    .pipe(plugins.postcss(processors))
     .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest(paths.cssDestination));
   };
