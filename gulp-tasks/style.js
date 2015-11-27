@@ -14,6 +14,7 @@ module.exports = function (gulp, plugins) {
     var processors = [
         plugins.lost({}),
         plugins.cssnano({}),
+        plugins.rucksack({}),
         plugins.autoprefixer({browsers:['last 2 versions']})
     ];
   return gulp.src(paths.cssSource + 'main.scss')

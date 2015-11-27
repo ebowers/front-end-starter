@@ -1,5 +1,9 @@
 @import 'utilities/index.scss';
 
+html {
+  font-size: responsive;
+}
+
 h1 {
   color: red;
 }

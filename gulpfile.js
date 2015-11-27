@@ -8,7 +8,19 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'gulp.*', 'lost', 'cssnano', 'autoprefixer'],
+  pattern: [
+    'gulp-*',
+    'gulp.*',
+    'lost',
+    'cssnano',
+    'autoprefixer',
+    'rucksack-css',
+    'postcss-vertical-rhythm'
+  ],
+  rename: {
+    'rucksack-css': 'rucksack',
+    'postcss-vertical-rhythm': 'vr'
+  },
   lazy: false
 });
 
@@ -23,6 +35,7 @@ gulp.task('style', getTask('style'));
 gulp.task('scripts', getTask('scripts'));
 gulp.task('jshint', getTask('jshint'));
 gulp.task('libscripts', getTask('libscripts'));
+
 
 
 // ---------------------------------------
